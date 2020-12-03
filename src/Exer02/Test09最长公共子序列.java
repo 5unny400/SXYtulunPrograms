@@ -3,7 +3,7 @@ package Exer02;
 import java.util.Scanner;
 
 class Main {
-    char result[] ;
+    private char result[] ;
     static int size;
 
     public static void main(String[] args) {
