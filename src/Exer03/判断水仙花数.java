@@ -5,18 +5,20 @@ import java.util.Scanner;
 class MainS {
     public static void main(String[] args) {
         Scanner scan = new Scanner(System.in);
-        int x;
-        while ((x = scan.nextInt())!= 0) {
+        int x =scan.nextInt();
+        do {
+            if(x == 0) break;
             if (juge(x)) {
                 System.out.println("Yes");
             } else {
                 System.out.println("No");
             }
-        }
+            x =scan.nextInt();
+        }while(x != 0);
         scan.close();
     }
 
-    public static boolean juge(int x) {
+    private static boolean juge(int x) {
         int result = 0;
         int tmp;
         int xnum = x;
