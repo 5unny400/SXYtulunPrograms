@@ -8,32 +8,32 @@ class MainS {
         private Node next;
         private Node pre;
 
-        public Node getPre() {
+        Node getPre() {
             return pre;
         }
 
-        public void setPre(Node pre) {
+        void setPre(Node pre) {
             this.pre = pre;
         }
 
-        public int getNo() {
+        int getNo() {
             return no;
         }
 
-        public Node getNext() {
+        Node getNext() {
             return next;
         }
 
-        public void setNo(int no) {
+        void setNo(int no) {
             this.no = no;
         }
 
-        public void setNext(Node next) {
+        void setNext(Node next) {
             this.next = next;
         }
     }
 
-    static class LinkList{
+    private static class LinkList{
         private Node head;
         private Node tail;
     }
@@ -55,16 +55,19 @@ class MainS {
             }else {
                 Node tmp = new Node();
                 tmp.setNo(i);
+
                 p.setNext(tmp);
                 tmp.setPre(p);
                 tmp.setNext(list.head);
                 list.tail = tmp;
+
                 p = p.getNext();
             }
         }
 
         int y=0;
         Node q = list.head;
+        //当剩余人数不是一个时继续循环
         while(q!=q.getNext()){
             y++;
             if(y==3){
