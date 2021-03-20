@@ -3,6 +3,12 @@ package Exer03;
 import java.util.Arrays;
 import java.util.Scanner;
 
+/**
+ * 题号17:最长回文字符串
+ * 对于一个字符串，请设计一个高效算法，计算其中最长回文子串的长度。
+ *
+ * 给定字符串A以及它的长度n，请返回最长回文子串的长度。
+ */
 class MainL {
     private char[] chars;
 

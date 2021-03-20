@@ -51,7 +51,7 @@ class MainA {
             StringBuilder s = new StringBuilder("");
 
             boolean label = false;
-            for (int i = 1; i <= size; i++) {
+            for (int i = 0; i < size; i++) {
                 s.append(p.getNum()).append(",");
                 p = p.getNext();
                 label = true;
@@ -98,7 +98,7 @@ class MainA {
         } else if (linkList.size == 1) {
             if(p.getNum() < tmp){
                 newNode.setPre(linkList.tail);
-                linkList.tail.setPre(newNode);
+                linkList.tail.setNext(newNode);
 
                 linkList.tail = newNode;
             }else{
@@ -119,7 +119,7 @@ class MainA {
                     break;
                 }
             }
-            if (q == linkList.tail&&q == null) {
+            if (q == linkList.tail&&p == null) {
                 //插入的数当前链表最大
                 newNode.setPre(linkList.tail);
                 linkList.tail.setNext(newNode);
@@ -146,24 +146,29 @@ class MainA {
     //输出前k小
     private static void outPrint(LinkList linkList, int k) {
         if (linkList == null || linkList.head == null) return;
+
         Node p = linkList.head;
         for (int i = 0; i < linkList.size; i++) {
             if (i + 1 == k) {
-                linkList.tail = p;
                 //头结点分开
                 if (p.getPre() == null) {
-                    linkList.tail.setPre(p);
+                    linkList.tail.setPre(null);
+                    linkList.tail = p;
+                    linkList.head = linkList.tail;
+                    linkList.head.setNext(null);
                 } else {
                     //中间结点或者尾节点
-                    linkList.tail.setPre(p.getPre());
+                    p.getNext().setPre(null);
+                    p.setNext(null);
+
+                    linkList.tail = p;
                 }
-                p.setNext(null);
-                linkList.tail.setNext(null);
                 break;
             }
             //后移指针
             p = p.getNext();
         }
+        linkList.size = k;
         System.out.println(linkList.toString());
     }
 }
